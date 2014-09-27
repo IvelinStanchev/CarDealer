@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/available-cars.css" rel="stylesheet" />
+
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="https://bs-static.cdn.telerik.com/1.2.5/everlive.all.min.js"></script>
+    <script src="scripts/app.js"></script>
+
+</head>
+<body>
+    <div data-role="view" id="home-view" data-id="home-view" data-title="Available cars" data-layout="main-layout">
+        <ul id="cars" class="available-cars">
+        </ul>
+    </div>
+
+    <div data-role="layout" id="main-layout" data-id="main-layout">
+        <header data-role="header">
+            <div data-role="navbar" id="pesho">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#home-view">Available cars</a>
+                <a href="views/add-view.html#add-view">Add an ad</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
