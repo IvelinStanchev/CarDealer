@@ -10,11 +10,30 @@
             //transition: "slide"
         });
         
-        $("#cars").on("click", "div", function ($e) {
-            console.log($e.currentTarget.children[0].src);
+        $("#cars").on("click", "div", function ($e) {            
+            var currentAdSrc = $e.currentTarget.children[0].src;
+            var currentAd = $.grep(window.files, function (e) {
+                return e.imageUrl === currentAdSrc;
+            })[0];
+
             app.navigate("views/singleAdView.html");
 
-            $(".model-container").append("<p>Test</p>");
+            var imageContainer = $(document.createElement('div'));
+            imageContainer.setAttribute('id', 'image-container');
+            imageContainer.prepend($('<img>', { id: 'ad-image', src: currentAdSrc }));
+
+            var infoContainer = $(document.createElement('div'));
+            infoContainer.setAttribute('id', 'info-container');
+
+            $.each(currentAd, function (value, key) {
+                var newDiv = $(document.createElement('div'));
+                newDiv.setAttribute('id', value);
+                newDiv.html(value + ': ' + key);
+                newDiv.appendTo(infoContainer);
+            });
+
+            $('#model-container').append(imageContainer);
+            $('#model-container').append(infoContainer);
         });
 
         window.everlive = new Everlive("84Kc0v5WmmEQxXDe");
