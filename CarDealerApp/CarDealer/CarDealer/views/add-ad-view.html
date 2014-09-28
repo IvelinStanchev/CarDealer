@@ -1,0 +1,46 @@
+<div data-role="view"
+     data-layout="main-layout"
+     id="add-ad-view"
+     data-model="app.viewmodels.addAd">
+    <h1>Add</h1>
+    <label for="tb-brand">Brand:</label>
+    <input type="text" id="tb-brand"
+           data-bind="value: brand" />
+
+    <label for="tb-model">Model:</label>
+    <input type="text" id="tb-model"
+           data-bind="value: model" />
+
+    <label for="tb-fuelType">Fuel Type:</label>
+    <input type="text" id="tb-fuelType"
+           data-bind="value: fuelType" />
+
+    <label for="tb-year">Year:</label>
+    <input type="text" id="tb-year"
+           data-bind="value: year" />
+
+    <label for="tb-kilometers">Kilometers:</label>
+    <input type="text" id="tb-kilometers"
+           data-bind="value: kilometers" />
+
+    <label for="tb-price">Price:</label>
+    <input type="text" id="tb-price"
+           data-bind="value: price" />
+
+    <label for="tb-description">Description:</label>
+    <input type="text" id="tb-description"
+           data-bind="value: description" />
+
+    <label for="tb-name">Your Name:</label>
+    <input type="text" id="tb-name"
+           data-bind="value: name" />
+
+    <label for="tb-phoneNumber">Your PhoneNumber:</label>
+    <input type="text" id="tb-phoneNumber"
+           data-bind="value: phoneNumber" />
+
+    <button data-role="button"
+            data-bind="events: {click: saveAd}">
+        Take picture and save your ad!
+    </button>
+</div>

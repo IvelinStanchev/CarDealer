@@ -27,8 +27,9 @@
     <Content Include="cordova.wp8.js" />
     <Content Include="index.html" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\view-models\addAd.js" />
     <Content Include="styles\available-cars.css" />
-    <Content Include="views\add-view.html" />
+    <Content Include="views\add-ad-view.html" />
     <Content Include="views\singleAdView.html" />
     <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
@@ -89,7 +90,7 @@
     <Folder Include="kendo\typescript\" />
     <Folder Include="scripts\" />
     <Folder Include="scripts\libs\" />
-    <Folder Include="scripts\app\" />
+    <Folder Include="scripts\view-models\" />
     <Folder Include="styles\" />
     <Folder Include="views\" />
     <Folder Include="Plugins\" />
