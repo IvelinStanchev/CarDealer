@@ -37,12 +37,11 @@
             var modelContainer = $('.model-container');
             imageContainer.appendTo(modelContainer);
             infoContainer.appendTo(modelContainer);
-
-            modelContainer.on('click', function () {
+            
+            $('#chosen-car-view').on('click', function () {
                 modelContainer.empty();
                 app.navigate('index.html');
-            })
-            
+            });
         });
 
 
