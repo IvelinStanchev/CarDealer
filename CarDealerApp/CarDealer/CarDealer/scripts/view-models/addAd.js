@@ -36,6 +36,7 @@ window.Adding = (function (scope) {
                             },
                                 function () {
                                     navigator.notification.alert("Your ad has been added successfully!");
+                                    window.currentAdsCount++;
                                     window.LoadPhotos();
                                     self.set('brand', '');
                                     self.set('model', '');

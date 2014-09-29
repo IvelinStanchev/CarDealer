@@ -97,6 +97,60 @@
         }
         else {
             window.LoadPhotos();
+
+            window.everlive.data('CarDealer').get()
+            .then(function (data) {
+                window.currentAdsCount = data.count;
+            });
+
+            setInterval(function () {
+                window.everlive.data('CarDealer').get()
+                .then(function (data) {
+                    if (window.currentAdsCount < data.count) {
+                        window.currentAdsCount = data.count;
+
+                        var my_media = null;
+                        var mediaTimer = null;
+
+                        function onSuccess() {
+                            console.log("playAudio():Audio Success");
+                        }
+
+                        function onError(error) {
+                            alert('code: ' + error.code + '\n' +
+                                  'message: ' + error.message + '\n');
+                        }
+
+                        function setAudioPosition(position) {
+                            document.getElementById('audio_position').innerHTML = position;
+                        }
+
+                        function playAudio(src) {
+                            if (my_media == null) {
+                                my_media = new Media(src, onSuccess, onError);
+                            }
+                            my_media.play();
+
+                            if (mediaTimer == null) {
+                                mediaTimer = setInterval(function () {
+                                    my_media.getCurrentPosition(
+                                        function (position) {
+                                            if (position > -1) {
+                                                setAudioPosition((position) + " sec");
+                                            }
+                                        },
+                                        function (e) {
+                                            setAudioPosition("Error: " + e);
+                                        }
+                                    );
+                                }, 1000);
+                            }
+                        }
+
+                        playAudio('http://soundfxnow.com/soundfx/futuresoundfx-14.mp3');
+                    }
+                })
+            }, 5000);
         }
     });
 }());
