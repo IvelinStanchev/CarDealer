@@ -168,3 +168,10 @@
 [0928/212414:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0928/214120:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0928/214120:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/090722:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/090740:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/091301:ERROR:ipc_channel_win.cc(132)] pipe error: 109
+[0929/091302:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/091326:ERROR:ipc_channel_win.cc(132)] pipe error: 109
+[0929/091327:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/091327:ERROR:renderer_main.cc(226)] Running without renderer sandbox

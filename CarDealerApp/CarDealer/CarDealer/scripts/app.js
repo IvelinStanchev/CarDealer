@@ -19,15 +19,15 @@
             app.navigate("views/singleAdView.html");
 
             var imageContainer = $(document.createElement('div'));
-            imageContainer.setAttribute('id', 'image-container');
+            imageContainer.attr('id', 'image-container');
             imageContainer.prepend($('<img>', { id: 'ad-image', src: currentAdSrc }));
 
             var infoContainer = $(document.createElement('div'));
-            infoContainer.setAttribute('id', 'info-container');
+            infoContainer.attr('id', 'info-container');
 
             $.each(currentAd, function (value, key) {
                 var newDiv = $(document.createElement('div'));
-                newDiv.setAttribute('id', value);
+                newDiv.attr('id', value);
                 newDiv.html(value + ': ' + key);
                 newDiv.appendTo(infoContainer);
             });
