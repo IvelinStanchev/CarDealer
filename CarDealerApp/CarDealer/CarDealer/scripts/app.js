@@ -32,6 +32,8 @@
                 newDiv.appendTo(infoContainer);
             });
 
+            console.log(infoContainer);
+
             var modelContainer = $('.model-container');
             imageContainer.appendTo(modelContainer);
             infoContainer.appendTo(modelContainer);
