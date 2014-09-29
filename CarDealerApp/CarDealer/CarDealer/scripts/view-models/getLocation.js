@@ -3,13 +3,16 @@ app.viewmodels = app.viewmodels || {};
 
 (function (scope) {
     'use strict';
+    var API_KEY_GOOGLE_GEOCODING = 'AIzaSyCj7Dr0HZKRcMnIBuLm2HIWDMXKek1UtTA';
+    var NOT_GET_COORDINATES_MESSAGE = 'Unfortunately we could not get the coordinates';
+
     var currentPlaceAddress;
 
     function getCoordinates() {
         var locationGet = {};
 
         var error = function () {
-            navigator.notification.alert("Unfortunately we could not get the coordinates");
+            navigator.notification.alert(NOT_GET_COORDINATES_MESSAGE);
         };
 
         var geoConfig = {
@@ -23,13 +26,11 @@ app.viewmodels = app.viewmodels || {};
             };
 
             $.ajax({
-                type: "GET",
+                type: 'GET',
                 url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + locationGet.latitude +  ',' + locationGet.longitude +
-                    '&key=AIzaSyCj7Dr0HZKRcMnIBuLm2HIWDMXKek1UtTA',
-                contentType: "application/json",
+                    '&key=' + API_KEY_GOOGLE_GEOCODING,
+                contentType: 'application/json',
             }).then(function (data) {
-                console.log(data['results'][0]['formatted_address']);
-
                 currentPlaceAddress = data['results'][0]['formatted_address'];
 
                 return currentPlaceAddress;

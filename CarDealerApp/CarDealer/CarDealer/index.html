@@ -14,11 +14,12 @@
     <script src="scripts/view-models/loadAds.js"></script>
     <script src="scripts/view-models/getLocation.js"></script>
     <script src="scripts/view-models/addAd.js"></script>
+    <script src="scripts/view-models/pullToRefresh.js"></script>
     <script src="scripts/app.js"></script>
 </head>
 <body>
     <div data-role="view" id="home-view" data-id="home-view" data-title="Available cars"
-         data-layout="main-layout" data-show="app.viewmodels.getLocation">
+         data-layout="main-layout" data-show="app.viewmodels.getLocation" data-init="app.viewmodels.initPullToRefreshScroller">
         <h3>You are at: <span data-bind="text: location"></span></h3>
         <ul id="cars" class="available-cars"></ul>
     </div>
@@ -32,8 +33,8 @@
 
         <footer data-role="footer">
             <div data-role="tabstrip">
-                <a href="#home-view">Available cars</a>
-                <a href="views/add-ad-view.html">Add an ad</a>
+                <a href="#home-view" data-transition="overlay:down reverse">Available cars</a>
+                <a href="views/add-ad-view.html" data-transition="overlay:down reverse">Add an ad</a>
             </div>
         </footer>
     </div>

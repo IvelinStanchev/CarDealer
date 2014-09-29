@@ -1,22 +1,22 @@
-/// <reference path="../kendo/js/jquery.min.js" />
-
 (function () {
-    document.addEventListener("deviceready", function () {
-        document.addEventListener("pause", onPause, false);
+    document.addEventListener('deviceready', function () {
+        var CONNECTED_TO_INTERNET_MESSAGE = 'You are now connected to internet.';
+        var NO_INTERNET_CONNECTION_MESSAGE = 'No internet connection!';
+        var NOTIFICATION_SOUND_SRC = 'http://soundfxnow.com/soundfx/futuresoundfx-14.mp3';
+        var ONPAUSE_MESSAGE = 'Your program has been in pause for a while. Click OK to resume';
+        var API_KEY_DATABASE = '84Kc0v5WmmEQxXDe';
 
-        function onPause() {
-            alert("Your program has been in pause for a while. Click OK to resume");
-        }
+        document.addEventListener('pause', onPause, false);
 
         window.files = [];
 
         var app = new kendo.mobile.Application(document.body, {
-            skin: "flat",
-            initial: "home-view",
-            transition: "slide"
+            skin: 'flat',
+            initial: 'home-view',
+            transition: 'slide'
         });
 
-        $("#cars").on("click", "div", function ($e) {
+        $('#cars').on('click', 'div', function ($e) {
             if ($e.currentTarget.id == 'eachItem') {
                 var clickedTargetChildren = $e.currentTarget.children[1];
 
@@ -34,7 +34,7 @@
                 var phoneNumber = allInformationAsArray[8];
                 var pictureUri = allInformationAsArray[9];
 
-                app.navigate("views/singleAdView.html");
+                app.navigate('views/singleAdView.html');
 
                 var modelContainer = $('.single-ad-container');
                 if (modelContainer.html !== '') {
@@ -62,8 +62,8 @@
                 buttonContainer.append($('<button>', { id: 'add-contact' }).addClass('add-contact').html('AddContact'));
 
                 buttonContainer.children()[0].addEventListener('click', function () {
-                    var myContact = navigator.contacts.create({ "displayName": name });
-                    alert(name + " has been added to your contacts successfully.");
+                    var myContact = navigator.contacts.create({ 'displayName': name });
+                    alert(name + ' has been added to your contacts successfully.');
                 }, false);
 
                 setTimeout(function () {
@@ -76,20 +76,20 @@
             }
         });
 
-        window.everlive = new Everlive("84Kc0v5WmmEQxXDe");
+        window.everlive = new Everlive(API_KEY_DATABASE);
 
         //navigator.connection.type = Connection.NONE;
 
         var hasConnection = window.CheckForConnection();
 
         if (!hasConnection) {
-            alert("No internet connection!");
+            alert(NO_INTERNET_CONNECTION_MESSAGE);
 
             var interval = setInterval(function () {
                 hasConnection = window.CheckForConnection();
 
                 if (hasConnection) {
-                    alert("You are now connected to internet.");
+                    alert(CONNECTED_TO_INTERNET_MESSAGE);
                     clearInterval(interval);
                     window.LoadPhotos();
                 }
@@ -147,10 +147,14 @@
                             }
                         }
 
-                        playAudio('http://soundfxnow.com/soundfx/futuresoundfx-14.mp3');
+                        playAudio(NOTIFICATION_SOUND_SRC);
                     }
                 })
             }, 5000);
+        }
+
+        function onPause() {
+            alert(ONPAUSE_MESSAGE);
         }
     });
 }());
