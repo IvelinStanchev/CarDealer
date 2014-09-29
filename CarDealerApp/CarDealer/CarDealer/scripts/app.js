@@ -32,8 +32,9 @@
                 newDiv.appendTo(infoContainer);
             });
 
-            $('#model-container').append(imageContainer);
-            $('#model-container').append(infoContainer);
+            var modelContainer = $('.model-container');
+            imageContainer.appendTo(modelContainer);
+            infoContainer.appendTo(modelContainer);
         });
 
         window.everlive = new Everlive("84Kc0v5WmmEQxXDe");
