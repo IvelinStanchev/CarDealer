@@ -49,7 +49,7 @@ window.Adding = (function (scope) {
                                 })
                         }, error);
             };
-            
+
             window.LoadPhotos();
 
             var error = function () {
@@ -78,36 +78,60 @@ window.Adding = (function (scope) {
             var name = this.get('name');
             var phoneNumber = this.get('phoneNumber');
 
+            var EARLIEST_YEAR = 1950; // for instance
+            var MIN_PHONE_DIGITS = 6;
+            var MIN_NAME_LETTERS = 4;
+            
+            var currentYear = new Date().getFullYear();
+            
             if (brand == "") {
-                alert("The brand cannot be empty");
-            }
-            else if (model == "") {
-                alert("The model cannot be empty");
-            }
-            else if (fuelType == "") {
-                alert("The fuelType cannot be empty");
-            }
-            else if (year == "") {
-                alert("The year cannot be empty");
-            }
-            else if (kilometers == "") {
-                alert("The kilometers cannot be empty");
-            }
-            else if (price == "") {
-                alert("The price cannot be empty");
-            }
-            else if (description == "") {
-                alert("The description cannot be empty");
-            }
-            else if (name == "") {
-                alert("The name cannot be empty");
-            }
-            else if (phoneNumber == "") {
-                alert("The phoneNumber cannot be empty");
+                displayEmptyErrorMessage('Brand');
+            } else if (model == "") {
+                displayEmptyErrorMessage('Model');
+            } else if (fuelType == "") {
+                displayEmptyErrorMessage('Fuel Type');
+            } else if (year == "") {
+                displayEmptyErrorMessage('Year');
+            } else if (year < EARLIEST_YEAR || year > currentYear) {
+                alert('Invalid year - valid values are between ' + EARLIEST_YEAR + ' and ' + currentYear);
+            } else if (kilometers == "") {
+                displayEmptyErrorMessage('Kilometers');
+            } else if (!isNumber(kilometers)) {
+                alert('Kilometers must be a number');
+            } else if (kilometers < 0) {
+                alert('Kilometers cannot be less than 0');
+            } else if (price == "") {
+                displayEmptyErrorMessage('Price');
+            } else if (!isNumber(price)) {
+                alert('Price must be a number');
+            } else if (price < 0) {
+                alert('Price cannot be less than 0');
+            } else if (description == "") {
+                displayEmptyErrorMessage('Description');
+            } else if (name == "") {
+                displayEmptyErrorMessage('Your Name');
+            } else if (name.length < MIN_PHONE_DIGITS) {
+                alert('Name must consist of at least ' + MIN_NAME_LETTERS + ' digits');
+            } else if (phoneNumber == "") {
+                displayEmptyErrorMessage('Your Phone Number');
+            } else if (!isNumber(phoneNumber)) {
+                alert('Phone number must be a number');
+            } else if (phoneNumber.length < MIN_PHONE_DIGITS) {
+                alert('Phone number must consist of at least ' + MIN_PHONE_DIGITS + ' digits');
             }
             else {
                 navigator.camera.getPicture(success, error, config);
+                console.log(fuelType);
+            };
+
+            function isNumber(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
             }
+
+            function displayEmptyErrorMessage(field) {
+                alert('The field: \"' + field + '\" cannot be empty');
+            };
+
         }
-});
+    });
 }(app.viewmodels));
