@@ -187,3 +187,4 @@
 [0929/091954:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0929/092300:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0929/092300:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/093350:ERROR:CONSOLE(5092)] "Uncaught TypeError: Cannot call method 'templateContent' of null", source: chrome-devtools://devtools/inspector.js (5092)

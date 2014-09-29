@@ -26,18 +26,25 @@
             infoContainer.attr('id', 'info-container');
 
             $.each(currentAd, function (value, key) {
-                var newDiv = $(document.createElement('div'));
-                newDiv.attr('id', value);
-                newDiv.html(value + ': ' + key);
-                newDiv.appendTo(infoContainer);
+                if (value != 'imageUrl') {
+                    var newDiv = $(document.createElement('div'));
+                    newDiv.attr('id', value);
+                    newDiv.html(value + ': ' + key);
+                    newDiv.appendTo(infoContainer);
+                }                
             });
-
-            console.log(infoContainer);
 
             var modelContainer = $('.model-container');
             imageContainer.appendTo(modelContainer);
             infoContainer.appendTo(modelContainer);
+
+            modelContainer.on('click', function () {
+                modelContainer.empty();
+                app.navigate('index.html');
+            })
+            
         });
+
 
         window.everlive = new Everlive("84Kc0v5WmmEQxXDe");
 
