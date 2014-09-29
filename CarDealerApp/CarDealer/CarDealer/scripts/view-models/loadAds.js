@@ -12,7 +12,6 @@
                     $.ajax({
                         type: "GET",
                         url: 'http://api.everlive.com/v1/84Kc0v5WmmEQxXDe/Files/' + file.Pic,
-                        //headers: { "Authorization" : "Bearer your-access-token-here" },
                         contentType: "application/json",
                     }).then(function (picData) {
                         files.push({

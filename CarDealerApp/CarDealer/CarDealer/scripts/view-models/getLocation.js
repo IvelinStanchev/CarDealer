@@ -26,7 +26,6 @@ app.viewmodels = app.viewmodels || {};
                 type: "GET",
                 url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + locationGet.latitude +  ',' + locationGet.longitude +
                     '&key=AIzaSyCj7Dr0HZKRcMnIBuLm2HIWDMXKek1UtTA',
-                //headers: { "Authorization" : "Bearer your-access-token-here" },
                 contentType: "application/json",
             }).then(function (data) {
                 console.log(data['results'][0]['formatted_address']);
