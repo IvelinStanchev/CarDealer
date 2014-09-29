@@ -52,6 +52,7 @@
     "android.permission.CAMERA",
     "android.permission.GET_ACCOUNTS",
     "android.permission.INTERNET",
+    "android.permission.LOCATION_HARDWARE",
     "android.permission.MANAGE_ACCOUNTS",
     "android.permission.MODIFY_AUDIO_SETTINGS",
     "android.permission.READ_CONTACTS",

@@ -10,19 +10,23 @@
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="https://bs-static.cdn.telerik.com/1.2.5/everlive.all.min.js"></script>
+    <script src="scripts/view-models/checkForConnection.js"></script>
+    <script src="scripts/view-models/loadCurrentAd.js"></script>
+    <script src="scripts/view-models/loadAds.js"></script>
+    <script src="scripts/view-models/getLocation.js"></script>
     <script src="scripts/view-models/addAd.js"></script>
     <script src="scripts/app.js"></script>
-
 </head>
 <body>
-    <div data-role="view" id="home-view" data-id="home-view" data-title="Available cars" data-layout="main-layout">
-        <ul id="cars" class="available-cars">
-        </ul>
+    <div data-role="view" id="home-view" data-id="home-view" data-title="Available cars"
+         data-layout="main-layout" data-show="app.viewmodels.getLocation">
+        <h3>You are at: <span data-bind="text: location"></span></h3>
+        <ul id="cars" class="available-cars"></ul>
     </div>
 
     <div data-role="layout" id="main-layout" data-id="main-layout">
         <header data-role="header">
-            <div data-role="navbar" id="pesho">
+            <div data-role="navbar" id="main-navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>

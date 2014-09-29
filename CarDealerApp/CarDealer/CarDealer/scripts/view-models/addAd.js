@@ -22,15 +22,6 @@ window.Adding = (function (scope) {
                     base64: data
                 },
                         function (picData) {
-                            //window.files.push({
-                            //    brand: self.get('brand'),
-                            //    model: self.get('model'),
-                            //    fuelType: self.get('fuelType'),
-                            //    year: self.get('year'),
-                            //    kilometers: self.get('kilometers'),
-                            //    description: self.get('description')
-                            //});
-
                             window.everlive.data('CarDealer').create({
                                 'Brand': self.get('brand'),
                                 'Model': self.get('model'),
@@ -45,71 +36,24 @@ window.Adding = (function (scope) {
                             },
                                 function () {
                                     navigator.notification.alert("Your ad has been added successfully!");
-                                    loadPhotos();
+                                    window.LoadPhotos();
+                                    self.set('brand', '');
+                                    self.set('model', '');
+                                    self.set('fuelType', '');
+                                    self.set('year', '');
+                                    self.set('kilometers', '');
+                                    self.set('price', '');
+                                    self.set('description', '');
+                                    self.set('name', '');
+                                    self.set('phoneNumber', '');
                                 })
                         }, error);
             };
             
-            function loadPhotos() {
-                var hasConnection = checkForConnection();
-                if (!hasConnection) {
-                    navigator.notification.alert("No internet connection. Please, provide connection and try again.");
-                }
-
-                window.files = [];
-                window.everlive.data('CarDealer').get()
-                    .then(function (data) {
-                        data.result.forEach(function (file) {
-                            $.ajax({
-                                type: "GET",
-                                url: 'http://api.everlive.com/v1/84Kc0v5WmmEQxXDe/Files/' + file.Pic,
-                                //headers: { "Authorization" : "Bearer your-access-token-here" },
-                                contentType: "application/json",
-                            }).then(function (picData) {
-                                files.push({
-                                    'brand': file.Brand,
-                                    'model': file.Model,
-                                    'fuelType': file.FuelType,
-                                    'year': file.Year,
-                                    'kilometers': file.Kilometers,
-                                    'price': file.Price,
-                                    'description': file.Description,
-                                    'name': file.Name,
-                                    'phoneNumber': file.PhoneNumber,
-                                    'imageUrl': picData.Result.Uri
-                                });
-                            })
-                                .then(function () {
-                                    $("#cars").kendoMobileListView({
-                                        dataSource: files,
-                                        template:
-                                            "<div id=\"eachItem\">" +
-                                                "<img src='#= data.imageUrl #'>" +
-                                                "<div id=\"eachItemContainer\">" +
-                                                        "<div id=\"brand\">Brand: #= data.brand #</div>" +
-                                                        "<div id=\"model\">Model: #= data.model #</div>" +
-                                                        "<div id=\"kilometers\">Kilometers: #= data.kilometers #</div>" +
-                                                        "<div id=\"price\">Price: #= data.price #</div>" +
-                                                "</div>" +
-                                        "</div>"
-                                    });
-                                });
-                        });
-                    });
-            }
-
-            function checkForConnection() {
-                var networkState = navigator.connection.type;
-
-                if (networkState == Connection.NONE) {
-                    return false;
-                }
-
-                return true;
-            }
+            window.LoadPhotos();
 
             var error = function () {
-                var hasConnection = checkForConnection();
+                var hasConnection = window.CheckForConnection();
                 if (!hasConnection) {
                     navigator.notification.alert("No internet connection. Please, provide connection and try again.");
                 }
@@ -117,13 +61,53 @@ window.Adding = (function (scope) {
                     navigator.notification.alert("Unfortunately we could not add the image");
                 }
             };
+
             var config = {
                 destinationType: Camera.DestinationType.DATA_URL,
                 targetHeight: 120,
                 targetWidth: 120
             };
 
-            navigator.camera.getPicture(success, error, config);
+            var brand = this.get('brand');
+            var model = this.get('model');
+            var fuelType = this.get('fuelType');
+            var year = this.get('year');
+            var kilometers = this.get('kilometers');
+            var price = this.get('price');
+            var description = this.get('description');
+            var name = this.get('name');
+            var phoneNumber = this.get('phoneNumber');
+
+            if (brand == "") {
+                alert("The brand cannot be empty");
+            }
+            else if (model == "") {
+                alert("The model cannot be empty");
+            }
+            else if (fuelType == "") {
+                alert("The fuelType cannot be empty");
+            }
+            else if (year == "") {
+                alert("The year cannot be empty");
+            }
+            else if (kilometers == "") {
+                alert("The kilometers cannot be empty");
+            }
+            else if (price == "") {
+                alert("The price cannot be empty");
+            }
+            else if (description == "") {
+                alert("The description cannot be empty");
+            }
+            else if (name == "") {
+                alert("The name cannot be empty");
+            }
+            else if (phoneNumber == "") {
+                alert("The phoneNumber cannot be empty");
+            }
+            else {
+                navigator.camera.getPicture(success, error, config);
+            }
         }
 });
 }(app.viewmodels));

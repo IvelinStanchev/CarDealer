@@ -3,21 +3,30 @@ html, head, body, footer, header, div, a, ul, li{
     padding: 0;
 }
 
-h1{
+/*h1{
     text-align: center;
     border: 1px solid green;
     border-radius: 10px;
-}
+}*/
 
-input{
+#add-ad-view input{
     display: block;
     width: 100%;
-    height: 30px;
+    height: 40px;
 }
 
-#pesho{
+#add-ad-view label{
+    font-size: 20px;
+}
+
+#main-navbar{
     background-color: yellow;
     border-radius: 20px;
+}
+
+#add-ad-view button{
+    width: 100%;
+    font-size: 20px;
 }
 
 .available-cars #eachItem{
@@ -34,7 +43,47 @@ input{
     float:right;
 }
 
+.available-cars #eachItem #eachItemContainer p{
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
 .available-cars img{
     border-radius: 8px;
     border: 5px solid white;
+}
+
+.single-ad-container{
+    width: 100%;
+    padding-top: 10px;
+}
+
+.single-ad-container #image-container img{
+    border-radius: 10px;
+}
+
+.single-ad-container #image-container{
+    display: table;
+    margin: 0 auto;
+}
+
+.single-ad-container #information-container{
+    margin-left: 15px;
+}
+
+.single-ad-container p{
+    padding: 0;
+    margin: 0;
+    padding-bottom: 3px;
+    color: blue;
+}
+
+
+.single-ad-container #button-container button{
+    width: 100%;
+    height: 35px;
+    color: green;
+    font-size: 18px;
+    font-style: italic;
 }
