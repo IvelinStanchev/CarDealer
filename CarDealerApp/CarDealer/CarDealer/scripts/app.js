@@ -18,6 +18,9 @@
 
             app.navigate("views/singleAdView.html");
 
+            var modelContainer = $('.model-container');
+            modelContainer.empty();
+
             var imageContainer = $(document.createElement('div'));
             imageContainer.attr('id', 'image-container');
             imageContainer.prepend($('<img>', { id: 'ad-image', src: currentAdSrc }));
@@ -34,14 +37,16 @@
                 }                
             });
 
-            var modelContainer = $('.model-container');
+            $('#back-button').on('click', function () {
+                app.navigate("#:back");
+            });
+
             imageContainer.appendTo(modelContainer);
             infoContainer.appendTo(modelContainer);
             
-            $('#chosen-car-view').on('click', function () {
-                modelContainer.empty();
-                app.navigate('index.html');
-            });
+            //$('#chosen-car-view').on('click', function () {
+            //    app.navigate('index.html');
+            //});
         });
 
 

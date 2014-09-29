@@ -30,6 +30,7 @@
     <Content Include="scripts\view-models\addAd.js" />
     <Content Include="scripts\view-models\showChosenAdd.js" />
     <Content Include="styles\available-cars.css" />
+    <Content Include="styles\showChosenAd.css" />
     <Content Include="views\add-ad-view.html" />
     <Content Include="views\singleAdView.html" />
     <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />

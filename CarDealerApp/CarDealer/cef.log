@@ -188,3 +188,12 @@
 [0929/092300:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0929/092300:ERROR:renderer_main.cc(226)] Running without renderer sandbox
 [0929/093350:ERROR:CONSOLE(5092)] "Uncaught TypeError: Cannot call method 'templateContent' of null", source: chrome-devtools://devtools/inspector.js (5092)
+[0929/102408:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/102408:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/102840:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/102840:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/102911:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/102911:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/103115:ERROR:ipc_channel_win.cc(132)] pipe error: 109
+[0929/103115:ERROR:renderer_main.cc(226)] Running without renderer sandbox
+[0929/103116:ERROR:renderer_main.cc(226)] Running without renderer sandbox
