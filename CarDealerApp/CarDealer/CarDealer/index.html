@@ -20,7 +20,8 @@
 <body>
     <div data-role="view" id="home-view" data-id="home-view" data-title="Available cars"
          data-layout="main-layout" data-show="app.viewmodels.getLocation" data-init="app.viewmodels.initPullToRefreshScroller">
-        <h3>You are at: <span data-bind="text: location"></span></h3>
+        <h3><span data-bind="text: location">GETTING YOUR POSITION...</span></h3>
+        <h4 class="newly-ads">Loading ads . . .</h4>
         <ul id="cars" class="available-cars"></ul>
     </div>
 

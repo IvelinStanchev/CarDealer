@@ -12,7 +12,7 @@
         window.files = [];
         window.everlive.data(TYPES_NAME_DATABASE).get()
             .then(function (data) {
-                data.result.forEach(function (file) {
+                data.result.reverse().forEach(function (file) {
                     $.ajax({
                         type: 'GET',
                         url: 'http://api.everlive.com/v1/' + API_KEY_DATABASE + '/Files/' + file.Pic,

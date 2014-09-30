@@ -8,7 +8,7 @@ app.viewmodels = app.viewmodels || {};
 
     var currentPlaceAddress;
 
-    function getCoordinates() {
+    function getCoordinates(e) {
         var locationGet = {};
 
         var error = function () {
@@ -27,26 +27,25 @@ app.viewmodels = app.viewmodels || {};
 
             $.ajax({
                 type: 'GET',
-                url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + locationGet.latitude +  ',' + locationGet.longitude +
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + locationGet.latitude + ',' + locationGet.longitude +
                     '&key=' + API_KEY_GOOGLE_GEOCODING,
                 contentType: 'application/json',
             }).then(function (data) {
-                currentPlaceAddress = data['results'][0]['formatted_address'];
+                currentPlaceAddress = 'You are at: ' + data['results'][0]['formatted_address'];
+
+                var vm = kendo.observable({
+                    location: currentPlaceAddress
+                });
+                kendo.bind(e.view.element, vm);
 
                 return currentPlaceAddress;
-            })
+            });
         };
 
         navigator.geolocation.getCurrentPosition(geoSuccess, error, geoConfig);
     }
 
     scope.getLocation = function (e) {
-        currentPlaceAddress = getCoordinates();
-        setTimeout(function () {
-            var vm = kendo.observable({
-                location: currentPlaceAddress
-            });
-            kendo.bind(e.view.element, vm);
-        }, 5000);
+        currentPlaceAddress = getCoordinates(e);
     };
 }(app.viewmodels));

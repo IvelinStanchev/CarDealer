@@ -5,6 +5,8 @@
         var NOTIFICATION_SOUND_SRC = 'http://soundfxnow.com/soundfx/futuresoundfx-14.mp3';
         var ONPAUSE_MESSAGE = 'Your program has been in pause for a while. Click OK to resume';
         var API_KEY_DATABASE = '84Kc0v5WmmEQxXDe';
+        var TYPES_NAME_DATABASE = 'CarDealer';
+        var NO_NEWLY_ADS_MESSAGE = 'No newly ads were added.';
 
         document.addEventListener('pause', onPause, false);
 
@@ -62,8 +64,19 @@
                 buttonContainer.append($('<button>', { id: 'add-contact' }).addClass('add-contact').html('AddContact'));
 
                 buttonContainer.children()[0].addEventListener('click', function () {
-                    var myContact = navigator.contacts.create({ 'displayName': name });
-                    alert(name + ' has been added to your contacts successfully.');
+                    var myContact = navigator.contacts.create();
+
+                    myContact.displayName = name;
+
+                    var phoneNumbers = [];
+                    phoneNumbers[0] = new ContactField('', phoneNumber, false);
+                    myContact.phoneNumbers = phoneNumbers;
+
+                    myContact.save(function () {
+                        alert(name + ' has been added to your contacts successfully.');
+                    }, function () {
+                        alert(name + ' has failed to be added to your contacts!');
+                    });
                 }, false);
 
                 setTimeout(function () {
@@ -98,16 +111,31 @@
         else {
             window.LoadPhotos();
 
-            window.everlive.data('CarDealer').get()
+            window.everlive.data(TYPES_NAME_DATABASE).get()
             .then(function (data) {
                 window.currentAdsCount = data.count;
+
+                var lastAdsCount = localStorage.getItem('adsCount');
+
+                if (lastAdsCount < window.currentAdsCount) {
+                    var newAdsCount = window.currentAdsCount - lastAdsCount;
+
+                    $('.newly-ads').html(newAdsCount + ' newly ad/ads were uploaded.');
+
+                    localStorage.setItem('adsCount', window.currentAdsCount);
+                }
+                else {
+                    $('.newly-ads').html(NO_NEWLY_ADS_MESSAGE);
+                }
             });
 
             setInterval(function () {
-                window.everlive.data('CarDealer').get()
+                window.everlive.data(TYPES_NAME_DATABASE).get()
                 .then(function (data) {
                     if (window.currentAdsCount < data.count) {
                         window.currentAdsCount = data.count;
+
+                        localStorage.setItem('adsCount', window.currentAdsCount);
 
                         var my_media = null;
                         var mediaTimer = null;
@@ -149,6 +177,8 @@
 
                         playAudio(NOTIFICATION_SOUND_SRC);
                     }
+
+
                 })
             }, 5000);
         }
